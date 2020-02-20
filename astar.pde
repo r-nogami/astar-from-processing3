@@ -1,3 +1,6 @@
+//---------------------------------
+// A Starの探索システム
+
 int hTiles = 40;
 int vTiles = 40;
 int tileWidth, tileHeight;
@@ -11,6 +14,7 @@ ArrayList<Tile> path;
 Tile start;
 Tile end;
 
+//----------------------------------
 float heuristic(Tile a, Tile b)
 {
   return dist(a.i, a.j, b.i, b.j);
