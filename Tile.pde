@@ -14,6 +14,7 @@ class Tile
 
   Boolean obstacle = false;
 
+  //クラスのコンストラクタ（初期化子）
   Tile(int i, int j, int w, int h)
   {
     this.i = i;
@@ -28,6 +29,7 @@ class Tile
     }
   }
 
+  //メンバ関数（メソッド）
   void fillNeighbours(Tile[][] tileset)
   {
     neighbours.clear();
@@ -47,7 +49,7 @@ class Tile
     {
       neighbours.add(tileset[i][j+1]);
     }
-    //Diagonais
+    //diagnosis 診断結果
     if (i > 0 && j > 0) {
       this.neighbours.add(tileset[i - 1][j - 1]);
     }
