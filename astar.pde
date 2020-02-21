@@ -1,11 +1,11 @@
 //---------------------------------
 // A Starの探索システム
 
-int hTiles = 40;
-int vTiles = 40;
+int hTiles = 20;
+int vTiles = 20;
 int tileWidth, tileHeight;
 
-Tile[][] tileset;
+Tile[][] tileset;  //タイルのグリッド
 
 ArrayList<Tile> closedSet;
 ArrayList<Tile> openSet;
@@ -20,12 +20,17 @@ float heuristic(Tile a, Tile b)
   return dist(a.i, a.j, b.i, b.j);
 }
 
+//----------------------------------
+//----------------------------------
 void setup()
 {
-  size(800, 800);
-  tileWidth = width / hTiles;
-  tileHeight = height / vTiles;
-  tileset = new Tile[hTiles][vTiles];
+  size(400, 400);
+  tileWidth = width / hTiles;  //タイル一つの幅
+  tileHeight = height / vTiles;  //タイル一つの高さ
+  println(tileWidth);
+  tileset = new Tile[hTiles][vTiles];  //全タイルグリッド
+
+  //全タイルの初期化
   for (int i = 0; i < hTiles; i++)
   {
     for (int j = 0; j < vTiles; j++)
@@ -33,6 +38,7 @@ void setup()
       tileset[i][j] = new Tile(i, j, tileWidth, tileHeight);
     }
   }
+
   for (int i = 0; i < hTiles; i++)
   {
     for (int j = 0; j < vTiles; j++)
@@ -40,6 +46,7 @@ void setup()
       tileset[i][j].fillNeighbours(tileset);
     }
   }
+
   closedSet = new ArrayList<Tile>();
   openSet = new ArrayList<Tile>();
   path = new ArrayList<Tile>();
@@ -52,7 +59,11 @@ void setup()
 
   openSet.add(start);
 }
+
 boolean paused = false;
+
+//----------------------------------
+//----------------------------------
 void draw()
 {
   if (paused)
@@ -146,6 +157,7 @@ void draw()
   end.draw(120, 200, 120);
 }
 
+//----------------------------------
 void mousePressed()
 {
   paused = !paused;

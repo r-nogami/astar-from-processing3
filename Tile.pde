@@ -30,26 +30,27 @@ class Tile
   }
 
   //メンバ関数（メソッド）
+  //
   void fillNeighbours(Tile[][] tileset)
   {
-    neighbours.clear();
+    neighbours.clear();  //リストを初期化
+    //左端でないならば
     if (i > 0)
-    {
-      neighbours.add(tileset[i-1][j]);
-    }
+      neighbours.add(tileset[i-1][j]);  //左隣をリストに追加
+
+    //上端でないならば
     if (j > 0)
-    {
-      neighbours.add(tileset[i][j-1]);
-    }
+      neighbours.add(tileset[i][j-1]);  //上隣をリストに追加
+
+    //右端でないならば
     if (i < width/w-1)
-    {
-      neighbours.add(tileset[i+1][j]);
-    }
+      neighbours.add(tileset[i+1][j]);  //右隣をリストに追加
+
+    //下端でないならば
     if (j < height/h-1)
-    {
-      neighbours.add(tileset[i][j+1]);
-    }
-    //diagnosis 診断結果
+      neighbours.add(tileset[i][j+1]);  //下隣をリストに追加
+
+    //Diagonais 対角線
     if (i > 0 && j > 0) {
       this.neighbours.add(tileset[i - 1][j - 1]);
     }
